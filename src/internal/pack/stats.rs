@@ -60,9 +60,8 @@ pub fn pack_stats(pack_path: &str) -> Result<PackStats, GitError> {
     }
 
     // 2. Open the file
-    let f = File::open(path).map_err(|e| {
-        GitError::InvalidPackFile(format!("Failed to open file: {}", e))
-    })?;
+    let f = File::open(path)
+        .map_err(|e| GitError::InvalidPackFile(format!("Failed to open file: {}", e)))?;
     let mut reader = BufReader::new(f);
 
     // 3. Create a Pack instance
